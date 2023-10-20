@@ -1,0 +1,37 @@
+---
+interface Partner {
+    logoUrl : string;
+    linkUrl : string;
+}
+
+const partnersList : Partner[] = [
+    {
+        logoUrl: '/logos/logo_mbi.svg',
+        linkUrl : 'https://missionbiblique.org/'
+    }
+]
+---
+
+<section id="partners" class="mt-8">
+    <div class="container mx-auto max-w-screen-md">
+        <h2 class="text-center text-3xl font-bold py-8">Nos partenaires</h2>
+        <div class="flex flex-row space-x-16 justify-center">
+            {
+                partnersList.map(e =>  
+                    (
+                    <a class="grayscale hover:grayscale-0" href={e.linkUrl} target="_blank" >
+                        <img src={e.logoUrl} alt="" />
+                    </a>
+                    )
+                )
+            }
+       
+        </div>
+    </div>
+</section>
+
+<style>
+    #partners img {
+        height: 2.5rem;
+    }
+</style>
