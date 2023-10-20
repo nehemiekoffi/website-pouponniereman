@@ -6,16 +6,20 @@ import "../styles/main.css";
 interface Props {
 	title: string;
 	isHome?: boolean;
+	metaDescription?: string;
 }
 
-const { title, isHome = false } = Astro.props;
+const { title, isHome = false, metaDescription } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta
+			name="description"
+			content={`Pouponnière de Man, Orphelinat de Man | ${title}`}
+		/>
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
