@@ -1,9 +1,66 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "photoswipe/style.css";
+import "photoswipe/dist/photoswipe.css";
+
+interface GalleryImage {
+    width: number;
+    height: number;
+    fileName: string;
+}
+const galleryPhotosPath = "/images/galerie/";
+const photosFiles = await Astro.glob("/public/images/galerie/*.jpeg");
+const photos: GalleryImage[] = photosFiles.map((e): GalleryImage => {
+    const { src, width, height } = e.default;
+    return {
+        fileName: src.split(galleryPhotosPath)[1].split("?")[0],
+        width,
+        height,
+    };
+});
+
+console.log(photos);
 ---
+
+<script>
+    import PhotoSwipeLightbox from "photoswipe/lightbox";
+
+    const lightbox = new PhotoSwipeLightbox({
+        gallery: "#gallery-pictures",
+        children: "a",
+        pswpModule: () => import("photoswipe"),
+    });
+    lightbox.init();
+</script>
 
 <Layout title="Galerie photos">
     <div class="container mx-auto p-8">
-        <h1>Hello</h1>
+        <div
+            class="gallery columns-2 gap-4 sm:columns-2 sm:gap-4 md:columns-3 lg:columns-4 [&>a:not(:first-child)]:mt-4"
+            id="gallery-pictures"
+        >
+            {
+                photos.map((img) => (
+                    <a
+                        href={`${galleryPhotosPath}${img.fileName}`}
+                        data-pswp-width={img.width}
+                        data-pswp-height={img.height}
+                        target="_blank"
+                    >
+                        <img
+                            class="rounded-xl"
+                            src={`${galleryPhotosPath}${img.fileName}`}
+                            alt=""
+                        />
+                    </a>
+                ))
+            }
+        </div>
     </div>
 </Layout>
+
+<style>
+    .gallery a {
+        display: block;
+    }
+</style>
