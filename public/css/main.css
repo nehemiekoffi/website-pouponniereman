@@ -4,6 +4,10 @@ body {
     font-family: 'Jost', sans-serif;
 }
 
+footer {
+    margin-top: 4rem;
+}
+
 .font-dm-serif {
     font-family: 'DM Serif Text', serif;
 }
