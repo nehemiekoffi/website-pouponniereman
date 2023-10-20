@@ -17,7 +17,7 @@ const photos: GalleryImage[] = photosFiles
     .map((e): GalleryImage => {
         const { src, width, height } = e.default;
         return {
-            fileName: src.split(galleryPhotosPath)[1].split("?")[0],
+            fileName: src,
             width,
             height,
         };
@@ -46,7 +46,7 @@ console.log(photos);
             {
                 photos.map((img) => (
                     <a
-                        href={`${galleryPhotosPath}${img.fileName}`}
+                        href={img.fileName}
                         data-pswp-width={img.width}
                         data-pswp-height={img.height}
                         target="_blank"
