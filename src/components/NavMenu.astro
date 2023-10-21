@@ -5,15 +5,17 @@ interface NavLink {
 }
 const pathname = new URL(Astro.request.url).pathname;
 
+console.log(pathname);
+
 const navLinks: NavLink[] = [
     {
         path: "/",
         name: "Accueil",
     },
-    {
-        path: "/history",
-        name: "Notre histoire",
-    },
+    // {
+    //     path: "/history",
+    //     name: "Notre histoire",
+    // },
     {
         path: "/galerie",
         name: "Galerie photos",

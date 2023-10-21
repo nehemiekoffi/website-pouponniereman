@@ -10,7 +10,7 @@ interface GalleryImage {
 }
 const galleryPhotosPath = "/src/assets/img/galerie/";
 const photosFiles = await Astro.glob("/src/assets/img/galerie/*");
-console.log(photosFiles);
+// console.log(photosFiles);
 
 const photos: GalleryImage[] = photosFiles
     .filter((x) => ["jpeg", "jpg", "png"].includes(x.default.format))
@@ -23,7 +23,7 @@ const photos: GalleryImage[] = photosFiles
         };
     });
 
-console.log(photos);
+// console.log(photos);
 ---
 
 <script>

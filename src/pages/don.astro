@@ -1,9 +1,26 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const donateNumbers = ["+225 07 78 07 37 04"];
 ---
 
 <Layout title="Faire un don">
-    <div class="container mx-auto p-8">
-        <h1>Hello</h1>
+    <div class="container mx-auto p-8 max-w-screen-md text-center">
+        <div>
+            <h2 class="text-2xl font-semibold mb-8">Via Mobile Money</h2>
+
+            {
+                donateNumbers.map((e) => (
+                    <div class="border w-fit mx-auto px-5 py-3 mb-4 rounded-xl bg-gray-100">
+                        <p>Wave ou Orange Money</p>
+                        <p class="text-xl font-semibold text-sky-800">{e}</p>
+                        <p class="text-sm mt-4">
+                            Bénéficiaire : <br /> Mme GUE -
+                            <i>Direction de la pouponnière de Man</i>
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
     </div>
 </Layout>
